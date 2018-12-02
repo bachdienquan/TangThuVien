@@ -2,5 +2,8 @@
     <string name="app_name">TangThuVien</string>
     <string name="desc">Image</string>
     <string name="listChapterTitle">List Chapter</string>
+    <string name="readingText">Chapter Reading</string>
     <string name="title_activity_list_chapter">ListChapter</string>
+    <string name="title_activity_chapter">ChapterActivity</string>
+    <string name="updating">Updating</string>
 </resources>

@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        String strdata=Helper.loadJSONFromAsset(getApplicationContext() );
         try{
+            String strdata=Helper.loadJSONFromAsset(getApplicationContext() );
             JSONObject obj = new JSONObject(strdata);
             TextView tv = (TextView)findViewById(R.id.titleBook);
             tv.setText(obj.getString("Name"));

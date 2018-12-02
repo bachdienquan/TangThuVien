@@ -8,4 +8,44 @@
     tools:context=".ListChapter"
     tools:showIn="@layout/activity_list_chapter">
 
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/titleReading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/readingText"
+            android:textSize="24sp"
+            app:fontFamily="@font/aldrich" />
+
+        <TextView
+            android:id="@+id/chapterReading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/updating"
+            android:textColor="#0F74BD"
+            android:textColorHighlight="#0F74BD"
+            android:textColorHint="#0F74BD"
+            android:textColorLink="#0F74BD"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/titleListChapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/readingText"
+            android:textSize="24sp"
+            app:fontFamily="@font/aldrich" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lvMain"/>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
