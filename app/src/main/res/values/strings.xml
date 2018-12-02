@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TangThuVien</string>
+    <string name="desc">Image</string>
+    <string name="listChapterTitle">List Chapter</string>
+    <string name="title_activity_list_chapter">ListChapter</string>
 </resources>
