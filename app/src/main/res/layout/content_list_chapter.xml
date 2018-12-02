@@ -28,6 +28,7 @@
             android:id="@+id/chapterReading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="textViewClick"
             android:text="@string/updating"
             android:textColor="#0F74BD"
             android:textColorHighlight="#0F74BD"
