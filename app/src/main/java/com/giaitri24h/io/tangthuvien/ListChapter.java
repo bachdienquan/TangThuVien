@@ -1,11 +1,13 @@
 package com.giaitri24h.io.tangthuvien;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +26,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -32,12 +37,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class ListChapter extends AppCompatActivity {
 static JSONArray jArray=new JSONArray();
+static String id="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chapter);
         TextView t2 = (TextView) findViewById(R.id.chapterReading);
-        t2.setMovementMethod(LinkMovementMethod.getInstance());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,7 +92,33 @@ static JSONArray jArray=new JSONArray();
                 }
             });
         }catch (Exception ex){}
-
+        try {
+            FileInputStream fin = new FileInputStream(new File(getFilesDir(), "ls_cache.txt"));
+            int c;
+            String temp="";
+            while( (c = fin.read()) != -1){
+                temp = temp + Character.toString((char)c);
+            }
+            fin.close();
+            if (temp != null && !temp.isEmpty()){
+                id=temp.split("@@@")[0];
+                String name=temp.split("@@@")[1];
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    t2.setText(Html.fromHtml("<h1 style='color:#1a0dab'>" + name + "</h1>", Html.FROM_HTML_MODE_COMPACT));
+                } else {
+                    t2.setText(Html.fromHtml("<h1 style='color:#1a0dab'>" + name + "</h1>"));
+                }
+            }
+            else t2.setText("Updating");
+        }
+        catch (Exception ex){
+            t2.setText("Updating");
+        }
+    }
+    public void textViewClick(View view){
+        Intent mintent = new Intent(ListChapter.this, ChapterActivity.class);
+        mintent.putExtra("ID",id);
+        startActivity(mintent);
     }
 
 

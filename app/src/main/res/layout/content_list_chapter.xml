@@ -38,7 +38,7 @@
             android:id="@+id/titleListChapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/readingText"
+            android:text="@string/listChapterTitle"
             android:textSize="24sp"
             app:fontFamily="@font/aldrich" />
 
