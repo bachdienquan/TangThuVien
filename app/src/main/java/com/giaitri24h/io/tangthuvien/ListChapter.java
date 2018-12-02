@@ -82,6 +82,7 @@ static JSONArray jArray=new JSONArray();
                         String val = obj.getString("ID");
                         Intent intent=new Intent(ListChapter.this,ChapterActivity.class);
                         intent.putExtra("ID",val);
+                        startActivity(intent);
                     }catch (Exception ex){}
                 }
             });

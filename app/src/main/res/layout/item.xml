@@ -14,5 +14,5 @@
         android:textSize="19sp"
         android:id="@+id/txtViewItem"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:gravity="start"/>
 </LinearLayout>
