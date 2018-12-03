@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -61,6 +63,7 @@ static String id="";
         HashMap<String, String> hashmap;
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
         final ListView lView = (ListView) findViewById(R.id.lvMain);
+
         try{
             String strJson=Helper.loadJSONFromAsset(getApplicationContext() );
             JSONObject json = new JSONObject(strJson);
@@ -120,7 +123,5 @@ static String id="";
         mintent.putExtra("ID",id);
         startActivity(mintent);
     }
-
-
 
 }

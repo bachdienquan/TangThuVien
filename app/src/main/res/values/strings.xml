@@ -6,4 +6,5 @@
     <string name="title_activity_list_chapter">ListChapter</string>
     <string name="title_activity_chapter">ChapterActivity</string>
     <string name="updating">Updating</string>
+    <string name="preChapter">Pre Chapter</string>
 </resources>
