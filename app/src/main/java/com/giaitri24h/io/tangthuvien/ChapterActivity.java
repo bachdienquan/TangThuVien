@@ -23,6 +23,7 @@ public class ChapterActivity extends AppCompatActivity {
     static JSONArray jArray=new JSONArray();
     static Integer pre=0;
     static Integer next=0;
+    Menu optionsMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +55,17 @@ public class ChapterActivity extends AppCompatActivity {
     @Override
     public  boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menuitem,menu);
+        optionsMenu = menu;
         return true;
     }
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.preChapter:
-                getContent(pre+"");
+                getContentNew(pre);
                 break;
             case R.id.nexChapter:
-                getContent(next+"");
+                getContentNew(next);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -108,30 +110,18 @@ public class ChapterActivity extends AppCompatActivity {
         try{
             for (Integer i = 0; i < jArray.length(); i++) {
                 JSONObject obj = jArray.getJSONObject(i);
-                String _order = obj.getString("Order");
+                Integer _order = obj.getInt("Order");
                 // look for the entry with a matching `code` value
-                if (_order.equals(order)) {
+                if (_order==order) {
                     String id = obj.getString("ID");
                     String desc = obj.getString("Description");
                     String name = obj.getString("Name");
-                    pre = order - 1;
-                    next = order + 1;
+                    pre = _order - 1;
+                    next = _order + 1;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         t2.setText(Html.fromHtml("<h1>" + name + "</h1><br/>" + desc, Html.FROM_HTML_MODE_COMPACT));
                     } else {
                         t2.setText(Html.fromHtml(obj.getString("Description")));
-                    }
-                    String strPre = "";
-                    if (obj != null) {
-                        strPre = "Pre Chapter ||" ;
-                        MenuItem  menu1 = (MenuItem ) findViewById(R.id.preChapter);
-                        menu1.setTitle(strPre);
-                    }
-                    String strNext = "";
-                    if (obj != null) {
-                        strNext = "Next Chapter";
-                        MenuItem  menu1 = (MenuItem ) findViewById(R.id.nexChapter);
-                        menu1.setTitle(strNext);
                     }
                     try {
                         FileOutputStream fOut = new FileOutputStream(new File(getFilesDir(), "ls_cache.txt"));
@@ -143,6 +133,17 @@ public class ChapterActivity extends AppCompatActivity {
                     {
 
                     }
+                    String strPre = "";
+                    if (obj != null) {
+                        strPre = "Pre Chapter ||" ;
+                        optionsMenu.getItem(0).setTitle(strPre);
+                    }
+                    String strNext = "";
+                    if (obj != null) {
+                        strNext = "Next Chapter";
+                        optionsMenu.getItem(1).setTitle(strNext);
+                    }
+
                     break;
                 }
             }
