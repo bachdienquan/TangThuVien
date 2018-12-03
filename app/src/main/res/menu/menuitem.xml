@@ -1,9 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- "Mark Favorite", should appear as action button if possible -->
     <item
         android:id="@+id/preChapter"
-        android:icon="@drawable/back-arrow"
-        android:title="@string/preChapter"/>
-
+        android:title="@string/preChapter"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/nexChapter"
+        android:title="@string/nextChapter"
+        app:showAsAction="ifRoom"/>
 </menu>
