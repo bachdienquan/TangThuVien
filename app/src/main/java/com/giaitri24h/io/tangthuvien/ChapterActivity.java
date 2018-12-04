@@ -18,12 +18,15 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdRequest;
 public class ChapterActivity extends AppCompatActivity {
     static JSONArray jArray=new JSONArray();
     static Integer pre=0;
     static Integer next=0;
     Menu optionsMenu;
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,12 @@ public class ChapterActivity extends AppCompatActivity {
             getContent(val);
         }
         catch (Exception ex){}
+        MobileAds.initialize(this,
+                "ca-app-pub-4553269182745827/6191592465");
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-4553269182745827/6742256807");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
     @Override
     public  boolean onCreateOptionsMenu(Menu menu){
@@ -66,6 +75,9 @@ public class ChapterActivity extends AppCompatActivity {
                 break;
             case R.id.nexChapter:
                 getContentNew(next);
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
