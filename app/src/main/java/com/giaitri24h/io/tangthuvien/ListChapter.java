@@ -48,11 +48,11 @@ static String id="";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chapter);
-        MobileAds.initialize(this, "ca-app-pub-4553269182745827/6191592465");
+       /* MobileAds.initialize(this, "ca-app-pub-4553269182745827/6191592465");
         AdView adView = new AdView(this);
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        adView.loadAd(adRequest);*/
         TextView t2 = (TextView) findViewById(R.id.chapterReading);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

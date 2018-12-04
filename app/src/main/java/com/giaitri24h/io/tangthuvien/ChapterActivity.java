@@ -11,6 +11,7 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -69,15 +70,19 @@ public class ChapterActivity extends AppCompatActivity {
     }
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
+        ScrollView scrollViewChap = (ScrollView) findViewById(R.id.scrollViewChap);
         switch (item.getItemId()){
             case R.id.preChapter:
                 getContentNew(pre);
+
+                scrollViewChap.fullScroll(ScrollView.FOCUS_UP);
                 break;
             case R.id.nexChapter:
                 getContentNew(next);
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }
+                scrollViewChap.fullScroll(ScrollView.FOCUS_UP);
                 break;
         }
         return super.onOptionsItemSelected(item);

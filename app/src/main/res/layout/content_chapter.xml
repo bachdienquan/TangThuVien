@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_chapter">
 
     <ScrollView
+        android:id="@+id/scrollViewChap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

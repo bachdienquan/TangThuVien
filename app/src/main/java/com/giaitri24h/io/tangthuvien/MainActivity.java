@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 descriptBook.setText(Html.fromHtml(obj.getString("Description")));
             }
             Button btnChapter2 = (Button)findViewById(R.id.buttonChapter2);
-        }catch (JSONException e){
+        }catch (Exception e){
 
         }
     }
