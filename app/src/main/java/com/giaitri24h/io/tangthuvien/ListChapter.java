@@ -37,6 +37,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 public class ListChapter extends AppCompatActivity {
 static JSONArray jArray=new JSONArray();
 static String id="";
@@ -44,6 +48,11 @@ static String id="";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_chapter);
+        MobileAds.initialize(this, "ca-app-pub-4553269182745827/6191592465");
+        AdView adView = new AdView(this);
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         TextView t2 = (TextView) findViewById(R.id.chapterReading);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

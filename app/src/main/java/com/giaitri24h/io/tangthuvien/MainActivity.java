@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         MobileAds.initialize(this, "ca-app-pub-4553269182745827/6191592465");
-        /*AdView adView = new AdView(this);
+        AdView adView = new AdView(this);
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);*/
+        adView.loadAd(adRequest);
         try{
             String strdata=Helper.loadJSONFromAsset(getApplicationContext() );
             JSONObject obj = new JSONObject(strdata);
