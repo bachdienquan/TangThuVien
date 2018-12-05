@@ -12,25 +12,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 public class MainActivity extends AppCompatActivity {
     static Context myContext;
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this, "ca-app-pub-4553269182745827/6191592465");
-        AdView adView = new AdView(this);
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
         try{
             String strdata=Helper.loadJSONFromAsset(getApplicationContext() );
             JSONObject obj = new JSONObject(strdata);
@@ -47,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
     public void buttonClick(View view){
         Intent mintent = new Intent(MainActivity.this, ListChapter.class);

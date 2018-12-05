@@ -55,12 +55,12 @@ public class ChapterActivity extends AppCompatActivity {
             getContent(val);
         }
         catch (Exception ex){}
-        MobileAds.initialize(this,
+        /*MobileAds.initialize(this,
                 "ca-app-pub-4553269182745827/6191592465");
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-4553269182745827/6742256807");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());*/
     }
     @Override
     public  boolean onCreateOptionsMenu(Menu menu){
